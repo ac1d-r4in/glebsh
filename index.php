@@ -1,59 +1,35 @@
 <?php
+include "core/LogAbstract.php";
+include "core/LogInterface.php";
+include "core/EquationInterface.php";
+include "Shablakov/MyException.php";
+include "Shablakov/Log.php";
+include "Shablakov/Linear.php";
+include "Shablakov/Square.php";
 
-      //ax + b = 0
+use Shablakov\Log;
+use Shablakov\Square;
+use Shablakov\Linear;
+use Shablakov\MyException;
+/*
+include "core/loginterface.php";
+include "core/logabstract.php";
+include "core/equationinterface.php";
+include "Shablakov/log.php";
+include "Shablakov/myexception.php";
+include "Shablakov/linear.php";
+include "Shablakov/square.php";
+*/
 
-Class A {
+echo "Enter koefs a, b, c \n";
 
-    protected $x;
-    public function __construct($result = 0) {
-		$this->x = $result;
-    }
-	
-    public function resh() {
-        return $this->result;
-    }
-	
-    public function X($v) {
-        $this->x = $v;
-    }
-		
-    public function find($a, $b) {
-        $this->x = ($b * -1)/$a;
-        return $this->x;
-    }
+for($i = 0; $i < 3; $i++) {
+	fscanf(STDIN, "%d\n", $number);
+	$kfArray[] =  $number;
 }
-	  
-	  
-      //ax^2 + bx + c = 0
-	  
- Class B extends A {
-    public function __construct($result = 0) {
-        parent::__construct($result);             //
-    }
-    protected function disc($a, $b, $c) {
-        return pow($b, 2) - 4 * $a * $c;
-    }
-		
-    public function find2($a, $b, $c) {
-	    if($a==0) {
-			return $this->find($b, $c);  
-		}
-		$d = $this->disc($a, $b, $c);
-		if ($d >= 0) {
-			if($d > 0)  {
-				$this->x = Array();
-				$x1 = (-1 * $b + sqrt($d))/(2 * $a);
-				$x2 = (-1 * $b - sqrt($d))/(2 * $a);
-				array_push($this->x, $x1, $x2);
-			} 
-			if($d == 0) {
-				$this->x = (-1 * $b)/(2 * $a);
-			}
-			return $this->x;
-		} else {
-		   	return false
-		}
-	}
- } 
 
-      ?>
+$equation = new Square();
+$equation->solve($kfArray[0], $kfArray[1], $kfArray[2]);
+Log::write();
+
+?>
