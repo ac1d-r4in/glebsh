@@ -16,18 +16,20 @@ class Square extends Linear implements EquationInterface {
 
   public function solve($a, $b, $c) {
   	if($a == 0) {
-     
+     Log::log("Entered koef a = 0, so it's linear equation");
      $this->x = array($this->linearSolve($b, $c));
      return $this->x[0];
     }
 
-  	
+  	$this->eq = $a . "x^2 + " . $b . "x + " . $c . " = 0";
+    Log::log("Entered equation " . $this->eq . " is square");
+
   	$disc = $this->findDiscriminant($a, $b, $c);
     Log::log("D = " . $disc);
 
 	try {
 		if($disc < 0) {
-		  
+		  throw new MyException("This equation " . $this->eq . " has no roots");
 		}
 	} catch(MyException $ex) {
 		Log::log($ex->getMessage());

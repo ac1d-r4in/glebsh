@@ -16,7 +16,7 @@ class Linear {
   public function linearSolve($k, $b) {
     try {
 		if($k == 0) {
-			
+			throw new MyException($this->eq . " is not an equation");
 		}
 	} catch(MyException $ex) {
 		Log::log($ex->getMessage());
